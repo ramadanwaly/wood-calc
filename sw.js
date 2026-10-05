@@ -1,7 +1,7 @@
 "use strict";
 
 // غيّر الرقم ده لما تضيف أو تعدّل قايمة الملفات تحت
-const CACHE = "wood-calc-v1";
+const CACHE = "wood-calc-v2";
 
 const FILES = [
   "./",
@@ -11,6 +11,7 @@ const FILES = [
   "manifest.json",
   "icons/icon-192.png",
   "icons/icon-512.png",
+  "icons/wood-stack.png",
 ];
 
 // أول ما الحارس يتركّب: يحفظ نسخة من كل الملفات

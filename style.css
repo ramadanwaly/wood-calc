@@ -157,74 +157,265 @@ th {
   color: var(--brand-dark);
 }
 
+#summary-section .print-only {
+  display: none;
+}
+
+.report {
+  display: none;
+  color: #0b57d0;
+  direction: rtl;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Arabic", sans-serif;
+}
+
 @media print {
   @page {
-    margin: 16mm;
+    size: A4 portrait;
+    margin: 8mm;
   }
 
+  html,
   body {
+    min-width: 0;
+    margin: 0;
     background: #fff;
-    color: #000;
-    font-size: 12pt;
+    color: #0b57d0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
-  header {
-    padding: 0 0 12px;
-    background: #fff;
-    color: #000;
-  }
-
+  header,
   main {
-    max-width: none;
-    padding: 0;
-  }
-
-  #input-section,
-  button,
-  th:last-child,
-  td:last-child {
     display: none !important;
   }
 
-  section {
-    margin-bottom: 12px;
-    padding: 12px 0;
-    box-shadow: none;
+  .report {
+    display: block !important;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .report-heading {
+    padding: 10px 0 20px;
+    text-align: center;
+    border-bottom: 2px solid #bfdcff;
+    margin-bottom: 20px;
+  }
+
+  .report-heading h1 {
+    margin: 0;
+    color: #0b57d0;
+    font-size: 26pt;
+    font-weight: 800;
+  }
+
+  .report-rule {
+    display: none; /* using border-bottom instead */
+  }
+
+  .report-meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0 0 20px;
+    padding: 15px 5px;
+    border-radius: 12px;
+    background: #f0f6fd;
+  }
+
+  .report-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: right;
+  }
+
+  .report-meta-item + .report-meta-item {
+    border-right: 2px solid #bfdcff;
+  }
+
+  .report-meta-item span {
+    display: block;
+    font-size: 11pt;
+    font-weight: 700;
+    color: #0b57d0;
+  }
+
+  .report-meta-item strong {
+    display: block;
+    font-size: 13pt;
+    font-weight: 800;
+    color: #0b57d0;
+  }
+
+  /* Add icons via before pseudo element if we want, or rely on HTML update */
+
+  .report-stats {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+
+  .report-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 15px 5px;
+    border-radius: 12px;
+    background: #f0f6fd;
+    text-align: center;
+  }
+
+  .report-stat span {
+    font-size: 10pt;
+    font-weight: 700;
+  }
+
+  .report-stat strong {
+    font-size: 12pt;
+    font-weight: 800;
+  }
+
+  .report-table-section {
+    margin: 0 0 25px;
+    padding: 0;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .report-table-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 12px 15px;
+    background: #0b57d0;
+    color: #fff;
+    font-size: 14pt;
+    font-weight: 700;
+    border-radius: 12px;
+  }
+
+  .report-table {
+    width: 100%;
+    margin-top: 15px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    direction: rtl;
+  }
+
+  .report-table th,
+  .report-table td {
+    padding: 12px 5px;
+    text-align: center;
+  }
+
+  .report-table thead {
+    background: #f0f6fd;
+    border-bottom: 2px solid #bfdcff;
+  }
+
+  .report-table th {
+    color: #0b57d0;
+    font-size: 10pt;
+    font-weight: 700;
+  }
+
+  .report-table tbody tr {
+    background: #ffffff;
+    border-bottom: 1px solid #bfdcff;
+  }
+
+  .report-table tbody tr:nth-child(even) {
+    background: #f8fbff;
+  }
+
+  .report-table td {
+    color: #0b57d0;
+    font-size: 10pt;
+    font-weight: 700;
+  }
+
+  .report-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: 20px;
+    margin-top: 20px;
     break-inside: avoid;
   }
 
-  #list-section {
-    overflow: visible;
+  .report-wood-art {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+  
+  .report-wood-art img {
+    max-width: 100%;
+    height: auto;
   }
 
-  table {
-    font-size: 10pt;
+  .report-wood-art svg {
+    display: none;
   }
 
-  th,
-  td {
-    border-color: #999;
+  .report-cost {
+    border: 2px solid #bfdcff;
+    border-radius: 12px;
+    background: #ffffff;
+    overflow: hidden;
   }
 
-  #summary-section label,
-  #summary-section input {
-    display: inline-block;
-    width: auto;
-    min-height: 0;
-    margin: 4px 0;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    color: #000;
-    font: inherit;
-    vertical-align: baseline;
+  .report-cost h2 {
+    margin: 0;
+    padding: 12px 15px;
+    background: #0b57d0;
+    color: #fff;
+    font-size: 14pt;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  #summary-section input {
-    text-align: left;
+  .report-cost dl {
+    margin: 0;
+    padding: 15px;
   }
 
-  #total-price {
-    color: #000;
+  .report-cost dl > div {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 2px solid #eef5fc;
+    font-size: 11pt;
+    font-weight: 700;
+    color: #0b57d0;
+  }
+
+  .report-cost dl > div dd {
+    font-weight: 800;
+  }
+
+  .report-cost .report-cost-total {
+    margin-top: 15px;
+    padding: 12px;
+    background: #0b57d0;
+    color: #ffffff;
+    border-radius: 8px;
+    border-bottom: none;
+    font-size: 12pt;
+  }
+
+  .report-cost .report-cost-total dt,
+  .report-cost .report-cost-total dd {
+    color: #ffffff;
   }
 }

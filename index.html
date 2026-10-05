@@ -19,6 +19,9 @@
     <section id="input-section">
       <h2>إضافة قطعة</h2>
 
+      <label for="client-project">العميل / المشروع</label>
+      <input id="client-project" type="text" placeholder="مثال: مشروع المطبخ">
+
       <label for="name">اسم القطعة (اختياري)</label>
       <input id="name" type="text" placeholder="مثال: رجل ترابيزة">
 
@@ -81,9 +84,11 @@
 
       <label for="waste">نسبة الهالك (%)</label>
       <input id="waste" type="text" inputmode="decimal" value="0">
+      <p class="print-only"><span>نسبة الهالك</span><strong id="print-waste-value">0%</strong></p>
 
       <label for="price">سعر المتر المكعب</label>
       <input id="price" type="text" inputmode="decimal">
+      <p class="print-only"><span>سعر المتر المكعب</span><strong id="print-price-value">0 ج.م</strong></p>
 
       <p>التكعيب بعد الهالك: <strong id="gross-volume">0</strong> م³</p>
       <p>السعر الإجمالي: <strong id="total-price">0</strong> ج.م</p>
@@ -93,5 +98,89 @@
       <button id="clear-button" type="button">مسح الكشف</button>
     </section>
   </main>
+
+  <article id="report" class="report" aria-hidden="true">
+    <div class="report-heading">
+      <h1>كشف تكعيب الخشب</h1>
+      <div class="report-rule"></div>
+    </div>
+
+    <div class="report-meta">
+      <div class="report-meta-item">
+        <span>رقم الكشف</span>
+        <strong id="report-number">—</strong>
+      </div>
+      <div class="report-meta-item">
+        <span>التاريخ</span>
+        <strong id="report-date">—</strong>
+      </div>
+      <div class="report-meta-item">
+        <span>العميل / المشروع</span>
+        <strong id="report-client">—</strong>
+      </div>
+    </div>
+
+    <div class="report-stats" aria-label="ملخص النتائج">
+      <div class="report-stat">
+        <span>عدد القطع</span>
+        <strong id="report-count">0</strong>
+      </div>
+      <div class="report-stat">
+        <span>إجمالي التكعيب</span>
+        <strong><bdi id="report-net-volume">0.000</bdi> م³</strong>
+      </div>
+      <div class="report-stat">
+        <span>نسبة الهالك</span>
+        <strong id="report-waste">0%</strong>
+      </div>
+      <div class="report-stat">
+        <span>التكعيب بعد الهالك</span>
+        <strong><bdi id="report-gross-volume">0.000</bdi> م³</strong>
+      </div>
+      <div class="report-stat">
+        <span>سعر المتر</span>
+        <strong><bdi id="report-unit-price">0</bdi> ج.م</strong>
+      </div>
+      <div class="report-stat report-stat-total">
+        <span>الإجمالي</span>
+        <strong><bdi id="report-total-price">0</bdi> ج.م</strong>
+      </div>
+    </div>
+
+    <section class="report-table-section">
+      <h2><span class="report-section-mark" aria-hidden="true">▤</span> بيانات الأخشاب</h2>
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th>م</th>
+            <th>اسم القطعة</th>
+            <th>الطول (سم)</th>
+            <th>العرض (سم)</th>
+            <th>السمك (سم)</th>
+            <th>العدد</th>
+            <th>التكعيب (م³)</th>
+          </tr>
+        </thead>
+        <tbody id="report-pieces-body"></tbody>
+      </table>
+    </section>
+
+    <div class="report-bottom">
+      <div class="report-wood-art" aria-hidden="true">
+        <img src="icons/wood-stack.png" alt="Wood Stack">
+      </div>
+
+      <section class="report-cost">
+        <h2><span class="report-section-mark" aria-hidden="true">▤</span> ملخص التكلفة</h2>
+        <dl>
+          <div><dt>التكعيب الأصلي</dt><dd><bdi id="report-cost-net">0.000</bdi> م³</dd></div>
+          <div><dt>الهالك</dt><dd id="report-cost-waste">0%</dd></div>
+          <div><dt>التكعيب المحسوب</dt><dd><bdi id="report-cost-gross">0.000</bdi> م³</dd></div>
+          <div><dt>سعر المتر</dt><dd><bdi id="report-cost-unit-price">0</bdi> ج.م</dd></div>
+          <div class="report-cost-total"><dt>إجمالي تكلفة الخشب</dt><dd><bdi id="report-cost-total">0</bdi> ج.م</dd></div>
+        </dl>
+      </section>
+    </div>
+  </article>
 </body>
 </html>
