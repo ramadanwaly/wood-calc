@@ -156,3 +156,75 @@ th {
   font-size: 1.6rem;
   color: var(--brand-dark);
 }
+
+@media print {
+  @page {
+    margin: 16mm;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 12pt;
+  }
+
+  header {
+    padding: 0 0 12px;
+    background: #fff;
+    color: #000;
+  }
+
+  main {
+    max-width: none;
+    padding: 0;
+  }
+
+  #input-section,
+  button,
+  th:last-child,
+  td:last-child {
+    display: none !important;
+  }
+
+  section {
+    margin-bottom: 12px;
+    padding: 12px 0;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  #list-section {
+    overflow: visible;
+  }
+
+  table {
+    font-size: 10pt;
+  }
+
+  th,
+  td {
+    border-color: #999;
+  }
+
+  #summary-section label,
+  #summary-section input {
+    display: inline-block;
+    width: auto;
+    min-height: 0;
+    margin: 4px 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #000;
+    font: inherit;
+    vertical-align: baseline;
+  }
+
+  #summary-section input {
+    text-align: left;
+  }
+
+  #total-price {
+    color: #000;
+  }
+}

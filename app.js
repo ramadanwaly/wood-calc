@@ -44,6 +44,7 @@ const priceInput = $("price");
 const grossVolumeEl = $("gross-volume");
 const totalPriceEl = $("total-price");
 const clearButton = $("clear-button");
+const printButton = $("print-button");
 
 /* ===== 4) قائمة القطع ===== */
 let pieces = [];
@@ -216,6 +217,7 @@ function updateTotals() {
 /* ===== 6) ربط الأزرار ===== */
 addButton.addEventListener("click", addPiece);
 clearButton.addEventListener("click", clearAll);
+printButton.addEventListener("click", () => window.print());
 wasteInput.addEventListener("input", updateTotals);
 priceInput.addEventListener("input", updateTotals);
 
