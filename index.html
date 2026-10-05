@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>حاسبة تكعيب الخشب</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1d4ed8">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>حاسبة تكعيب الخشب</h1>
+  </header>
+
+  <main>
+    <section id="input-section">
+      <h2>إضافة قطعة</h2>
+
+      <label for="name">اسم القطعة (اختياري)</label>
+      <input id="name" type="text" placeholder="مثال: رجل ترابيزة">
+
+      <label for="length">الطول</label>
+      <div class="field">
+        <input id="length" type="text" inputmode="decimal">
+        <select id="length-unit" aria-label="وحدة الطول">
+          <option value="cm" selected>سم</option>
+          <option value="mm">مم</option>
+          <option value="in">بوصة</option>
+        </select>
+      </div>
+
+      <label for="width">العرض</label>
+      <div class="field">
+        <input id="width" type="text" inputmode="decimal">
+        <select id="width-unit" aria-label="وحدة العرض">
+          <option value="cm" selected>سم</option>
+          <option value="mm">مم</option>
+          <option value="in">بوصة</option>
+        </select>
+      </div>
+
+      <label for="thickness">التخانة</label>
+      <div class="field">
+        <input id="thickness" type="text" inputmode="decimal">
+        <select id="thickness-unit" aria-label="وحدة التخانة">
+          <option value="cm" selected>سم</option>
+          <option value="mm">مم</option>
+          <option value="in">بوصة</option>
+        </select>
+      </div>
+
+      <label for="quantity">العدد</label>
+      <input id="quantity" type="text" inputmode="numeric" value="1">
+
+      <button id="add-button" type="button">إضافة للكشف</button>
+    </section>
+
+    <section id="list-section">
+      <h2>كشف القطع</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>القطعة</th>
+            <th>المقاس</th>
+            <th>العدد</th>
+            <th>م³</th>
+            <th>حذف</th>
+          </tr>
+        </thead>
+        <tbody id="pieces-body"></tbody>
+      </table>
+    </section>
+
+    <section id="summary-section">
+      <h2>الإجماليات</h2>
+      <p>عدد القطع: <strong id="total-count">0</strong></p>
+      <p>التكعيب الصافي: <strong id="net-volume">0</strong> م³</p>
+
+      <label for="waste">نسبة الهالك (%)</label>
+      <input id="waste" type="text" inputmode="decimal" value="0">
+
+      <label for="price">سعر المتر المكعب</label>
+      <input id="price" type="text" inputmode="decimal">
+
+      <p>التكعيب بعد الهالك: <strong id="gross-volume">0</strong> م³</p>
+      <p>السعر الإجمالي: <strong id="total-price">0</strong> ج.م</p>
+
+      <button id="clear-button" type="button">مسح الكشف</button>
+    </section>
+  </main>
+</body>
+</html>
